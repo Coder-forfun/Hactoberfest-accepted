@@ -1,5 +1,6 @@
 <h1 align="center"> Hacktoberfest 2021 </h1>
 
+Kindly maintain patience, our team will accept every valid Pull Request and will merge it in main branch!!!
 ***
 <h3 align="center">
     <a href="https://hacktoberfest.digitalocean.com/">
