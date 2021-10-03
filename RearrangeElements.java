@@ -5,6 +5,7 @@ public class RearrangeElements {
         rearrange(arr,n);
         printarray(arr,n);
     }
+    //rearrange elements
     private static void rearrange(Integer[] arr, int n) {
         int j = 0, temp;
         for(int i = 0; i < n; i++){
