@@ -1,73 +1,69 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#define MAX 10
 using namespace std;
- int val[1001],wt[1001];
-
- //bounded knapsack: we have to select one value only once
-int knapSack(int W, int n)
+struct product
 {
-    int i, w;
-    vector<vector<int>> K(n + 1, vector<int>(W + 1));
-    for(i = 0; i <= n; i++)
-    {
-        for(w = 0; w <= W; w++)
-        {
-            if (i == 0 || w == 0)
-                K[i][w] = 0;
-            else if (wt[i - 1] <= w)
-                K[i][w] = max(val[i - 1] +
-                                K[i - 1][w - wt[i - 1]],
-                                K[i - 1][w]);
-            else
-                K[i][w] = K[i - 1][w];
-        }
-    }
-    return K[n][W];
-}
-//Unbounded Kanpsack: we can select any value any number of times
-int unboundedKnapsack(int W, int n)
-{
-     int i, w;
-    vector<vector<int>> K(n + 1, vector<int>(W + 1));
-    for(i = 0; i <= n; i++)
-    {
-        for(w = 0; w <= W; w++)
-        {
-            if (i == 0 || w == 0)
-                K[i][w] = 0;
-
-                //main difference is here b/w KP and Unbounded KP, here after taking
-                //value val[i-1] we are not reducing i and calls K[i][w-wt[i-1]]
-            else if (wt[i - 1] <= w)
-                K[i][w] = max(val[i - 1] +
-                                K[i][w - wt[i - 1]],
-                                K[i - 1][w]);
-            else
-                K[i][w] = K[i - 1][w];
-        }
-    }
-    return K[n][W];
-}
+  int product_num;
+  int profit;
+  int weight;
+  float ratio;
+  float take_quantity;
+};
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int t;
-    cin>>t;
-    while(t--)
+  product P[MAX],temp;
+  int i,j,total_product,capacity;
+  float value=0;
+  cout<<"ENTER NUMBER OF ITEMS : ";
+  cin>>total_product;
+  cout<<"ENTER CAPACITY OF SACK : ";
+  cin>>capacity;
+  cout<<"\n";
+  for(i=0;i<total_product;++i)
+  {
+    P[i].product_num=i+1;
+    cout<<"ENTER PROFIT AND WEIGHT OF PRODUCT "<<i+1<<" : ";
+    cin>>P[i].profit>>P[i].weight;
+
+    P[i].ratio=(float)P[i].profit/P[i].weight;
+    P[i].take_quantity=0;
+  }
+
+  //HIGHEST RATIO BASED SORTING
+  for(i=0;i<total_product;++i)
+  {
+    for(j=i+1;j<total_product;++j)
     {
-        int n,W;
-        cin>>n>>W;
-        for(int i=0;i<n;i++)
-        {
-            cin>>val[i];
-        }
-         for(int i=0;i<n;i++)
-        {
-            cin>>wt[i];
-        }
-         cout << unboundedKnapsack(W,n);
+      if(P[i].ratio<P[j].ratio)
+      {
+        temp=P[i];
+        P[i]=P[j];
+        P[j]=temp;
+      }
     }
+  }
+  for(i=0;i<total_product;++i)
+  {
+    if(capacity==0)
+      break;
+    else if(P[i].weight<capacity)
+    {
+      P[i].take_quantity=1;
+      capacity-=P[i].weight;
+    }
+    else if(P[i].weight>capacity)
+    {
+      P[i].take_quantity=(float)capacity/P[i].weight;
+      capacity=0;
+    }
+  }
 
-
-    return 0;
+  cout<<"\n\nPRODUCTS TO BE TAKEN -";
+  for(i=0;i<total_product;++i)
+  {
+    cout<<"\nTAKE PRODUCT "<<P[i].product_num<<" : "<<P[i].take_quantity*P[i].weight<<" UNITS";
+    value+=P[i].profit*P[i].take_quantity;
+  }
+  cout<<"\nTHE KNAPSACK VALUE IS : "<<value;
+  return 0;
 }
