@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/binaryCalculator.css" type="text/css" />
+    <title>Binary Calculator</title>
+  </head>
+  <style>
+    body {
+      width: 33%;
+      margin: auto;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M831.189%2c393C871.39%2c390.342%2c907.861%2c369.223%2c927.229%2c333.895C945.877%2c299.88%2c940.073%2c260.264%2c923.074%2c225.396C903.101%2c184.427%2c876.644%2c140.239%2c831.189%2c136.897C781.535%2c133.247%2c737.212%2c166.698%2c712.492%2c209.916C687.953%2c252.818%2c683.42%2c306.766%2c710.307%2c348.237C735.36%2c386.879%2c785.236%2c396.038%2c831.189%2c393' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M213.66%2c73.219C235.252%2c74.918%2c259.775%2c72.514%2c271.196%2c54.111C283.03%2c35.042%2c275.365%2c11.182%2c264.265%2c-8.324C253.011%2c-28.099%2c236.413%2c-47.101%2c213.66%2c-46.99C191.04%2c-46.879%2c173.521%2c-28.307%2c163.906%2c-7.832C155.658%2c9.732%2c159.772%2c29.608%2c169.923%2c46.145C179.537%2c61.807%2c195.34%2c71.778%2c213.66%2c73.219' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M586.4950568053653 238.26959980341493L580.685269337856 404.6401452429192 747.0558147773602 410.44993271042847 752.8656022448695 244.0793872709242z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M306.78905984244034 212.0064064065672L308.88757762568184 332.2304096899321 429.1115809090467 330.1318919066906 427.0130631258052 209.90788862332573z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M21.371296559793443 444.5837901623511L89.19781134992573 474.7821001714217 100.58201896846549 357.94317298168795z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M562.5298953289868 451.8277450570691L465.12877390327253 519.8904999815445 558.4885249696844 565.42509303703z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+    }
+
+    h1 {
+      margin: 0px auto;
+      margin-bottom: 50px;
+      margin-top: 200px;
+      font-size: 3rem;
+      padding-left: 50px;
+      color: #fff;
+    }
+
+    #res {
+      background-color: lightgray;
+      height: 78px;
+      font-size: 30px;
+      padding-left: 10px;
+      padding-top: 10px;
+      letter-spacing: 2px;
+      border: 1px solid #111;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    #btns button {
+      width: 25%;
+      height: 86px;
+      font-size: 28px;
+      margin: 0;
+      float: left;
+      border: 1px solid #111;
+    }
+
+    #btn0,
+    #btn1 {
+      background-color: #bf5050;
+      color: white;
+    }
+
+    #btnClr,
+    #btnEql {
+      background-color: rgb(49, 49, 130);
+      color: white;
+    }
+
+    #btnSum,
+    #btnSub,
+    #btnMul,
+    #btnDiv {
+      background-color: #333;
+      color: red;
+    }
+    #btnSum {
+      border-bottom-left-radius: 10px;
+    }
+    #btnDiv {
+      border-bottom-right-radius: 10px;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h1>Binary Calculator</h1>
+      <div id="res"></div>
+      <div id="btns">
+        <button id="btn0">0</button>
+        <button id="btn1">1</button>
+        <button id="btnClr">C</button>
+        <button id="btnEql">=</button>
+        <button id="btnSum">+</button>
+        <button id="btnSub">-</button>
+        <button id="btnMul">*</button>
+        <button id="btnDiv">/</button>
+      </div>
+    </div>
+    <script>
+      function onButton(e) {
+        var btn = e.target || e.srcElement;
+        var action = document.getElementById(btn.id).innerHTML;
+        var res = document.getElementById('res');
+
+        switch (action) {
+          case '0':
+          case '1':
+          case '+':
+          case '-':
+          case '*':
+          case '/':
+            res.innerHTML += action;
+            break;
+          case 'C':
+            res.innerHTML = '';
+            break;
+          case '=':
+            var expr = res.innerHTML;
+            var nums = /(\d+)/g;
+            // Replace all base 2 nums with base 10 equivs
+            expr = expr.replace(nums, function (match) {
+              return parseInt(match, 2);
+            });
+            // eval in base 10 and convert to base 2
+            res.innerHTML = Math.floor(eval(expr)).toString(2);
+            break;
+          default:
+            console.error('should not be executed');
+            break;
+        }
+      }
+      var buttons = document.getElementsByTagName('button');
+      for (let button of buttons) {
+        button.onclick = onButton;
+      }
+    </script>
+  </body>
+</html>
