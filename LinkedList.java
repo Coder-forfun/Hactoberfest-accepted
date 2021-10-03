@@ -1,6 +1,6 @@
 import java.util.*;
-  
-public class Test {
+// we do not need access specifier as file name and class name is not same 
+class Test {
   
     public static void main(String args[])
     {
