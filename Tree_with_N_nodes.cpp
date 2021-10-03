@@ -1,4 +1,4 @@
-// This code will take input from user and construct a Tree and print both BFD and DFS
+// This code will take input from user and construct a Tree and print both BFS and DFS
 
 #include <iostream>
 #include <vector>
