@@ -1,0 +1,56 @@
+import java.awt.*;
+import java.net.*;
+import java.awt.event.*;
+
+class awt extends Frame{
+        awt(){
+             Label num1=new Label("Number1");
+            num1.setBounds(20,50,80,10);
+           TextField number1 =new TextField();
+           number1.setBounds(100,50,100,20);
+           Label num2=new Label("Number2");
+            num2.setBounds(20,70,80,10);
+            TextField number2 =new TextField();
+          number2.setBounds(100,70,100,20);
+          Button b=new Button("Add");
+          b.setBounds(100,120,65,20);
+          Label l1=new Label("Result :");
+          l1.setBounds(20,90,80,20);
+          TextField t=new TextField();
+          t.setBounds(100,90,100,20);
+          //Checkbox c =new Checkbox("c++");
+          //c.setBounds(300,300,50,50);
+           add(num1);
+           add(number1);
+           add(num2);
+           add(number2);
+           add(b);
+           add(l1);
+           add(t);
+           //add(c);
+           setSize(400,400);
+           setLayout(null);
+           setVisible(true);
+
+           b.addActionListener(new ActionListener(){
+              public void actionPerformed(ActionEvent e) {
+                try{ 
+                    int a = Integer.parseInt(number1.getText());
+                    int b = Integer.parseInt(number2.getText()); 
+                    int c = a / b; 
+                
+                        t.setText(String.valueOf(c)); 
+                    }
+                    catch(ArithmeticException z){
+                      t.setText("invalid");
+                    }
+                
+
+                }
+          }); 
+        }
+        public static void main(String[] args){
+          awt a=new awt();
+         
+        }
+}
