@@ -5,7 +5,11 @@ public class addition {
         System.out.println("Enter two numbers");
         Scanner inp=new Scanner(System.in);
         int a=inp.nextInt();
+        // need to close Scanner class
+        inp.close();
         int b=inp.nextInt();
+        // need to close Scanner class
+        inp.close();
         System.out.println("Addition of integers is: "+(a+b));
     }
 }
