@@ -18,3 +18,4 @@ while (i <= Time-1 ): # The loop started
     pyautogui.typewrite(Text) # will write the text the user want
     pyautogui.press('enter') # will work as the 'Enter' button
     i+=1 # i will increment as 1 each time
+    
