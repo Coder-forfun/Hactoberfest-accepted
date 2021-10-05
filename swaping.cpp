@@ -8,9 +8,10 @@ int main()
     //input two number
     cin>>x>>y;
     cout<<"num are " << "x is :" << x << " y is :" << y <<endl;
-    x = x ^ y;
-    y = x ^ y;
-    x = x ^ y;
+    x = x*y;
+    y = x/y;
+    x = x/y;
+    
 
     cout<<"After swaping number are " << "x is :" << x << " and y is :" << y<<endl;
 }
