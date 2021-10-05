@@ -4,26 +4,23 @@ class Solution {
 public:
     int f=0,i,j;
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>v;
-        
-        for(i=0;i<nums.size();i++)
-        {
-            for(j=i+1;j<nums.size();j++)
-            {
-                if(nums[i]+nums[j]==target)
+        map<int,int> m;
+                vector<int> v;
+                int n= nums.size();
+                for(int i=0;i<n;i++)
                 {
-                    f=1;
-                    break;
+                    
+                        int diff = target - nums[i];
+                        if(m.find(diff) != m.end())
+                        {
+                        auto p = m.find(diff);        
+                        v.push_back(p->second);
+                        v.push_back(i);
+                        }
+                        m.insert(make_pair(nums[i],i));
                 }
-            }
-            if(f==1)
-            {
-                v.push_back(i);
-                v.push_back(j);
-                break;
-            }
-        }
-        return v;
+          
+          return v;
     }
 };
 
