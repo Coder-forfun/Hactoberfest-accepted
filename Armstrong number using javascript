@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script>
+			function Armstrong()
+			{
+				var number,chknumber,remainder,addition = 0;
+				number = document.getElementById("N").value;
+
+				chknumber = number;
+				while(chknumber > 0)
+				{
+					remainder = chknumber%10;
+					addition = addition + remainder*remainder*remainder;
+									
+					chknumber = parseInt(chknumber/10);
+					alert(chknumber);	
+				}
+				if(addition == number)
+				{
+					alert("The inputed number " +number+ " is Armstrong number");
+				}
+				else
+				{
+					alert("The inputed number " +number+ " is not Armstrong number");
+				}
+			}
+		</script>
+	</head>
+	<body>
+        <h1>Armstrong number</h1>
+        <h4>A number is said to be Armstrong when its value is equal to its sum of cube of digits.</h4>
+        <h4>Whether a number is Armstrong or not</h4>
+				Enter The Number :
+		                  <input type="text" id = "N"/>
+	
+		<br><br>
+		<button onClick="Armstrong()">CHECK</button>
+	</body>
+</html>
