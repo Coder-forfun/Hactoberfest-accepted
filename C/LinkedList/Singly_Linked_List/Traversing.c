@@ -1,30 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct node{
-	int data;
-	struct node *nextAddress;
-}Node;
+#include "linked_list.h"
+
 Node *start = NULL;
-void insert(int no)
-{
-	Node *newNode, *ptr;
-	newNode = (Node *)malloc(sizeof(Node));
-	newNode->data = no;
-	newNode->nextAddress = NULL;
-	if(start == NULL)
-	{
-		start = newNode;
-	}
-	else
-	{
-		ptr = start;
-		while(ptr->nextAddress!=NULL)
-		{
-			ptr = ptr->nextAddress;
-		}
-		ptr->nextAddress = newNode;
-	}
-}
 void display()
 {
 	Node *ptr;
@@ -57,7 +35,7 @@ int main()
 			printf("Enter Number : ");
 			scanf("%d",&no);
 			printf("\n");
-			insert(no);
+			insert(&start, no);
 		}
 		else if(choice==2)
 		{

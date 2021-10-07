@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct node{
-	int data;
-	struct node *nextAddress;
-}Node;
+#include "linked_list.h"
 
 Node *start=NULL;
 
@@ -15,30 +11,10 @@ int sizeOfList()
 	int count=0;
 	while(ptr != NULL)
 	{
-		count = count + 1; 
+		count = count + 1;
 		ptr = ptr->nextAddress;
 	}
 	return count;
-}
-void add(int no)
-{
-	Node *newNode, *ptr;
-	newNode = (Node *)malloc(sizeof(Node));
-	newNode->data = no;
-	newNode->nextAddress = NULL;
-	if(start == NULL)
-	{
-		start = newNode;
-	}
-	else
-	{
-		ptr = start;
-		while(ptr->nextAddress!=NULL)
-		{
-			ptr = ptr->nextAddress;
-		}
-		ptr->nextAddress = newNode;
-	}
 }
 void insertBeg(int no)
 {
@@ -95,7 +71,7 @@ int main()
 			printf("Enter Number : ");
 			scanf("%d",&no);
 			printf("\n");
-			add(no);
+			insert(&start, no);
 		}
 		else if(choice==2)
 		{
@@ -114,7 +90,7 @@ int main()
 				}
 				else if(pos==size+1)
 				{
-					add(no);
+					insert(&start, no);
 					break;
 				}
 				else if(pos>size || pos<1)
@@ -127,7 +103,7 @@ int main()
 					break;
 				}
 			}
-			printf("\n");			
+			printf("\n");
 		}
 		else if(choice==3)
 		{
