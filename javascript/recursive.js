@@ -5,7 +5,7 @@ function start(nilai) {
 
   if (stop > 0 ) {
 
-  jalan(stop)
+  start(stop)
 
   }
 }
