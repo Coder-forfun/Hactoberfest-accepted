@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 class Node
@@ -116,22 +115,14 @@ public:
     {
         Node *temp=first;
         Node *t=NULL;
-        if(temp==NULL){
-            cout<<"NO Data!"<<endl;
-        }
-        else if(temp->getNext()==NULL)
-        {
-            first=NULL;
-
-        }
-        //(temp!=NULL)
-       else
+        if(temp!=NULL)
        {
+
         first=temp->getNext();
         first->setPrev(t);
        }
-   // else
-     //   cout<<"NO DATA!"<<endl;
+    else
+        cout<<"NO DATA!"<<endl;
     }
     void deleteAtEnd()
         {
@@ -244,8 +235,7 @@ void findIndex(int vel)
       int chk=0;
       if(temp==NULL)
       cout<<"NO Data to check!"<<endl;
-
-else if(temp->getNext()!= NULL){
+else
      temp=first;
       while(temp->getNext()!=NULL){
       if(temp->getData()==vel)
@@ -268,7 +258,6 @@ else
 
   }
   cout<<"The Index No. of given Data is:"<<x<<endl;
-}
 }
 }
 void  findValue(int in)
@@ -426,242 +415,105 @@ else
                         return cont;
                  }
                 }
-
-        void displayFirstQueue(){
-          Node *temp=first;
-          if(temp==NULL){
-            cout<<"No Data!"<<endl;
-
-        }
-        else
-            cout<<first->getData()<<endl;
-        }
-        void displayBackPeek(){
-           Node *temp = first;
-           if(temp==NULL)
-           {
-               cout<<"No Data!"<<endl;
-           }
-           else if(temp->getNext()==NULL){
-                cout<<temp->getData()<<endl;
-           }
-           else
-           {
-               while(temp->getNext()!=NULL){
-                temp=temp->getNext();
-
-
-               }
-               cout<<temp->getData()<<endl;
-
-           }
-
-        }
-        void displayTopPeek(){
-           Node *temp = first;
-           if(temp==NULL){
-            cout<<"No Data!"<<endl;
-           }
-           else if(temp->getNext()==NULL){
-             cout<<temp->getData()<<endl;
-           }
-           else{
-            while(temp->getNext()!=NULL){
-                temp=temp->getNext();
-
-            }
-            cout<<temp->getData()<<endl;
-           }
-
-        }
-        void reverseQ(){
-                Node *temp =first;
-
-                Node *temp2=first;
-
-            if(temp==NULL){
-                cout<<"No Data!"<<endl;
-            }
-            else{
-                while(temp->getNext()!=NULL){
-                    temp=temp->getNext();
-                }
-                    first=temp;
-                 temp2->setPrev(NULL);
-                while(temp!=NULL){
-
-                    temp2->setNext(temp);
-                    temp=temp->getPrev();
-                    temp2->getNext()->setPrev(temp2);
-                    temp2=temp2->getNext();
-
-                }
-
-                temp2->setNext(NULL);
-            }
-        }
-
 };
 
-class Queue{
-    private:
-    Linked_list l;
-    public:
-        void enQueue(int en){
-            l.addAtEnd(en);
-        }
-
-        void deQueue(){
-            l.deleteAtStart();
-        }
-        void frontPeek(){
-            l.displayFirstQueue();
-        }
-        void displayAll(){
-            l.display();
-        }
-        void qSize(){
-            cout<<"The size of Queue is:"<<l.getSize()<<endl;
-        }
-        void qFind(int v){
-            l.findIndex(v);
-        }
-        void backPeek(){
-            l.displayBackPeek();
-        }
-        void reverseQueue(){
-            l.reverseQ();
-        }
-};
-
-class Stack{
-   private:
-        Linked_list l;
-   public:
-      void pushS(int p){
-         l.addAtStart(p);
-      }
-      void popS(){
-         l.deleteAtStart();
-      }
-      void displayStack(){
-         l.display();
-      }
-      void sizeStack(){
-         cout<<"The size of Stack is:"<<l.getSize()<<endl;
-      }
-      void sFind(int s){
-         l.findIndex(s);
-      }
-      void topPeek(){
-         l.displayTopPeek();
-
-      }
-
-};
-class Checkbracket{
-        public:
-          void file()
-          {
-            ifstream file;
-            file.open("main.cpp");
-            char c;
-            int counter =0;
-            while(file.eof()==0)
-            {
-                file>>c;
-
-                if(c=='}' || c==')')
-                    {
-                        break;}
-                 else if(c=='{' && c=='(')
-                    {
-                        counter++;
-                    }
-                 if(c=='}' && c==')')
-                 {
-                     counter--;
-
-                 }
-
-            }
-            cout<<counter<<endl;
-             if(counter==0)
-             {
-
-                 cout<<"properly Nested!"<<endl;
-             }
-             else
-
-                cout<<"Not Properly Nested!"<<endl;
-
-          }
-
-
-
-};
 int main()
 {
     Node n(0);
     Linked_list l;
-    Queue q;
-    Stack st;
 int s;
 int w;
-int condition=0;
-int i;
-int f;
+
+l.addAtStart(9);
+l.addAtEnd(2);
+l.addAtEnd(7);
+l.addAtStart(33);
+l.display();
+l.findEnd(2);
+
+
+int i=0;
 int x;
+int ind=0;
+int c=0;
+int f=0;
+int indx;
+int vale;
 int y;
-  cout<<"Press 1 for Queue and Press 2 for Stack"<<endl;
-  cin>>condition;
-switch (condition){
-   case 1:
-       do {
-  cout<<"------------MENU ~ QUEUE------------"<<endl;
-  cout<<"press 1 to Enqueue"<<endl;
-  cout<<"press 2 to Dequeue"<<endl;
-  cout<<"press 3 to Front Peek"<<endl;
-  cout<<"press 4 to Back Peek"<<endl;
-  cout<<"press 5 to get the Size of Queue"<<endl;
-  cout<<"press 6 to Find the Value"<<endl;
-  cout<<"press 7 to Reverse the Queue"<<endl;
-  cout<<"Press 8 to Display All Queue"<<endl;
-    cin>>s;
+do {
+  cout<<"------------MENU~LINKED_LIST------------"<<endl;
+  cout<<"press 1 to ADD at Start"<<endl;
+  cout<<"press 2 to Add at End"<<endl;
+  cout<<"press 3 to Delete at Start"<<endl;
+  cout<<"press 4 to Delete at End"<<endl;
+  cout<<"press 5 to Delete at Specific index"<<endl;
+  cout<<"press 6 to Get the Size of List"<<endl;
+  cout<<"press 7 to Add the Value at any Index"<<endl;
+  cout<<"Press 8 to Find any Index By Value"<<endl;
+  cout<<"Press 9 to Find any Value By Index"<<endl;
+  cout<<"Press 10 to Remove the Value from the List"<<endl;
+  cout<<"Press 11 to Display the List!"<<endl;
+cin>>s;
   switch (s) {
     case 1:
-    cout<<"Enter the value you want to Add"<<endl;
+    cout<<"Enter the value you want to add at start!"<<endl;
       cin>>x;
-     q.enQueue(x);
+    l.addAtStart(x);
 
      break;
   case 2:
-      q.deQueue();
+
+  cout<<"Enter the value you want to add at the End!"<<endl;
+  cin>>y;
+  l.addAtEnd(y);
     break;
   case 3:
-      q.frontPeek();
+l.deleteAtStart();
 
     break;
   case 4:
-      q.backPeek();
+  l.deleteAtEnd();
     break;
   case 5:
-      q.qSize();
+
+  cout<<"Enter the index "<<endl;
+  cin>>i;
+    l.removeAt(i);
     break;
   case 6:
-  cout<<"Enter the Value to Find!"<<endl;
-  cin>>y;
-    q.qFind(y);
+  cout<<"The size of your list is:"<<l.getSize()<<endl;
+
       break;
   case 7:
-     q.reverseQueue();
-     break;
 
+   cout<<"Enter the endex no. "<<endl;
+   cin>>indx;
+   cout<<"Enter the value to store"<<endl;
+   cin>>vale;
+   l.addAtIndex(indx,vale);
+     break;
   case 8:
-    q.displayAll();
-        break;
-   case 9:
-      condition=2;
+  cout<<"Enter the value of the you want to find"<<endl;
+  cin>>c;
+  l.findIndex(c);
+
+    break;
+  case 9:
+
+    cout<<"Enter the Index NO. "<<endl;
+    cin>>indx;
+    l.findValue(indx);
+  break;
+  case 10:
+
+  cout<<"Enter the Value you want to remove"<<endl;
+  cin>>f;
+  l.sameVal(f);
+
+  break;
+  case 11:
+
+  l.display();
   break;
   default:
   cout<<"Unkown Command!!!"<<endl;
@@ -670,54 +522,6 @@ switch (condition){
 cout<<"If you want to close the program press 0 otherwise press 1!"<<endl;
 cin>>s;
 }while(s!=0);
-            break;
-  case 2:
-     do {
-  cout<<"------------MENU ~ STACK------------"<<endl;
-  cout<<"press 1 to Push"<<endl;
-  cout<<"press 2 to Pop"<<endl;
-  cout<<"press 3 to Top Peek"<<endl;
-  cout<<"press 4 to Get the Size Of Stack"<<endl;
-  cout<<"press 5 to Find the Value"<<endl;
-  cout<<"Press 6 to Display all Stack"<<endl;
-cin>>w;
-  switch (w) {
-    case 1:
-    cout<<"Enter the value you want to Add"<<endl;
-      cin>>i;
-        st.pushS(i);
-
-     break;
-  case 2:
-       st.popS();
-    break;
-  case 3:
-      st.topPeek();
-
-    break;
-  case 4:
-      st.sizeStack();
-    break;
-  case 5:
-      cout<<"Enter the Value to Find!"<<endl;
-      cin>>f;
-      st.sFind(f);
-    break;
-  case 6:
-       st.displayStack();
-      break;
-  default:
-  cout<<"Unkown Command!!!"<<endl;
-    break;
-}
-cout<<"If you want to close the program press 0 otherwise press 1!"<<endl;
-cin>>w;
-}while(w!=0);
-
-
-}
-
-
 
     return (0);
 }
