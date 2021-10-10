@@ -1,0 +1,85 @@
+#include<graphics.h>
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+/*
+
+Midpoint ellipse algorithm - 
+finds point on first quadrant 
+	- by dividing the quadrant in 2 regions.
+
+*/
+midpoint(int h, int k, int a, int b){
+	int x, y;
+	float p1o; 
+	// Let the inital point be
+	x=0; 
+	y=b;
+	
+	//decision parameter region 1
+	p1o = (b*b) + (a*a/4) - a*a*b;
+	
+	// Find points in Region 1 
+	while( 2.0*b*b*x <= 2.0*a*a*y)
+	   {
+		if(p1o < 0)
+		{ 
+		    // new point (x k+1 , y k)
+			x++;
+			p1o = p1o + 2*b*b*x + b*b;
+		}
+		else
+		{
+			// new point (x k+1 , y k-1)
+			x++;
+			y--;
+			p1o = p1o+ 2*b*b*x- 2*a*a*y- b*b;
+		}
+		putpixel(h+x,k+y,RED);
+		putpixel(h+x,k-y,RED);
+		putpixel(h-x,k+y,RED);
+		putpixel(h-x,k-y,RED);
+	   }
+	
+	   // Find points in Region 2
+	   int p2o = b*b*(x+0.5)*(x+0.5)+ a*a*(y-1)*(y-1) - a*a*b*b;
+	   while(y > 0)
+	   {
+		if(p2o <= 0)
+		{
+			x++;
+			y--;
+			p2o = p2o+2*b*b*x-2*a*a*y+a*a;
+		}
+		else
+		{
+			y--;
+			p2o = p2o-2*a*a*y+a*a;
+		}
+		
+		putpixel(h+x,k+y,RED);
+		putpixel(h+x,k-y,RED);
+		putpixel(h-x,k+y,RED);
+		putpixel(h-x,k-y,RED);
+	   }
+}
+int main()
+{
+   
+   int gd = DETECT, gm;
+   initgraph(&gd, &gm, "C:\\TC\\BGI");
+   /*   (x - h) ^2 +  ( y - k ) ^2 
+         ----------     --------       = 0           
+            a ^ 2          b ^ 2
+   */
+   int h,k;
+   long a,b;
+   
+   cout<<"Enter coordinates of centre : ";
+   cin>>h>>k;
+   cout<<"Enter x,y radius of ellipse: ";
+   cin>>a>>b;
+   midpoint(h,k,a,b);
+   getch();
+   closegraph();
+}
