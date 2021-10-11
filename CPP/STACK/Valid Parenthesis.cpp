@@ -7,34 +7,18 @@ bool isBalanced(string st)
   char x;
   for(int i=0;i<st.length();i++)
   {
-    if(st[i]=='{'||st[i]=='['||st[i]=='{')
+    if(st[i]=='{'||st[i]=='['||st[i]=='(')                         //earlier check not for round brace
     {
       s.push(st[i]);
       continue;
     }
-    if(s.empty())
-    return false;
-    switch(st[i])
-    {
-      case ')':
-      x=s.top();
-      s.pop();
-      if(x=='}'||x==']')
-      return false;
-      break;
-      case ']':
-      x=s.top();
-      s.pop();
-      if(x=='}'||x==')')
-      return false;
-      break;
-      case '}':
-      x=s.top();
-      s.pop();
-      if(x==']'||x==')')
-      return false;
-      break;
-    }
+   else if (!s.empty())
+   {
+     char c= s.top(); 
+     if(st[i]==')' &&c=='(' || st[i]==']' &&c=='[' || st[i]=='}' && c=='{')      //reduced switch case to compact form
+       s.pop();
+     else return false;
+   }
   }
   return (s.empty());
 }
