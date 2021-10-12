@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+
+class Graph
+{
+    bool **mat,first; 
+    bool *visit;
+    int *indeg;
+    int V,i;
+    
+    public:
+    Graph(int n)
+    {
+        V = n;
+        first = false;
+        mat = new bool*[V];
+        visit = new bool[V];
+        indeg = new int[V];
+        for(int i=1;i<=V;i++)
+        {
+            indeg[i] = 0;
+            mat[i] = new bool[V];
+            visit[i] = false;
+            for(int j=1;j<=V;j++)
+            mat[i][j] = false;
+        }
+    }
+    
+    void addEdge(int u,int v)
+    {
+        mat[u][v] = true; 
+    }
+    
+    void removeEdge(int u,int v)
+    {
+        mat[u][v] =mat[v][u] = false;
+    }
+    
+    void printGraph()
+    {
+        for(int i =1;i<=V;i++)
+        {
+            for(int j=1;j<=V;j++)
+            cout<<mat[i][j]<<" ";
+            cout<<"\n";
+        }
+    }
+    
+    void calculate_indeg()
+    {
+        for(int i=1;i<=V;i++)
+        {
+            for(int j=1;j<=V;j++)
+            {
+                if(mat[i][j])
+                indeg[j]++;
+            }
+            
+        }
+    }
+    
+    void update_indeg(int j)
+    {
+        indeg[j] =-1;
+        for(int k=1;k<=V;k++)
+        {
+            if(mat[j][k])
+            {
+                indeg[k]--;
+                removeEdge(j,k);
+            }
+        }
+    }  
+    
+    void topology()
+    {
+        
+        //cout<<"indeg";
+        int vertex,j;
+        for(j=1;j<=V;j++)
+        {
+            if(indeg[j] ==0)
+            {
+                vertex = j;
+                break;
+            }
+        }
+       cout<<"\nindegree of vertex:";
+        for(i=1;i<=V;i++)
+        cout<<"i:"<<i<<" "<<indeg[i]<<" ";
+        
+        if(j>V)
+        return;
+        
+        cout<<vertex<<" ";
+        update_indeg(vertex);
+        topology();
+        
+    }
+    
+};
+
+int main()
+{
+    Graph g(5);
+    
+    g.addEdge(1, 2);
+    g.addEdge(1, 4);
+    g.addEdge(2, 4);
+    g.addEdge(4, 5);
+    g.addEdge(2, 3);
+    g.addEdge(4, 3);
+    
+    g.printGraph();
+    g.calculate_indeg();
+    g.topology();
+}
