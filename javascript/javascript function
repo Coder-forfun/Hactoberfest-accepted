@@ -1,0 +1,37 @@
+/*function egfunction()
+	{
+			let b="Enter a year";
+			let year=prompt(b,2020);
+			if(year<2020){
+				alert("you are history");
+			}
+			else if(year==2020){
+				alert("welcome");
+			}
+			else{
+				alert("you are future");
+			}
+			
+
+		
+	}
+function egfunction()
+	{
+		let hour=getUTCHours()	
+		if(hour<9||hour>18)
+		{
+			alert("closed office");
+		}
+		else{
+			alert("office open");
+		}
+	}*/
+function egfunction()
+	{
+		let today = new Date();
+		let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+		let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		let dateTime = date+' '+time;
+		alert(datetime);
+	}
+	
