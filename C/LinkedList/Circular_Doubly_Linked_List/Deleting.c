@@ -1,208 +1,158 @@
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct node{
-	int data;
-	struct node *leftAddress;
-	struct node *rightAddress;
-}Node;
-
-Node *start=NULL, *end=NULL;
-
-int sizeofList()
+// C++ program to delete a given key from
+// circular doubly linked list.
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Structure of a Node
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+ 
+// Function to insert node in the list
+void insert(struct Node** start, int value)
 {
-	int count=0;
-	Node *ptr;
-	ptr = start;
-	while(ptr->rightAddress != start)
-	{
-		count = count + 1;
-		ptr = ptr->rightAddress;
-	}
-	count = count + 1;
-	return count;
+    // If the list is empty, create a single node
+    // circular and doubly list
+    if (*start == NULL) {
+        struct Node* new_node = new Node;
+        new_node->data = value;
+        new_node->next = new_node->prev = new_node;
+        *start = new_node;
+        return;
+    }
+ 
+    // If list is not empty
+ 
+    /* Find last node */
+    Node* last = (*start)->prev;
+ 
+    // Create Node dynamically
+    struct Node* new_node = new Node;
+    new_node->data = value;
+ 
+    // Start is going to be next of new_node
+    new_node->next = *start;
+ 
+    // Make new node previous of start
+    (*start)->prev = new_node;
+ 
+    // Make last previous of new node
+    new_node->prev = last;
+ 
+    // Make new node next of old last
+    last->next = new_node;
 }
-void add(int no)
+ 
+// Function to delete a given node from the list
+void deleteNode(struct Node** start, int key)
 {
-	Node *newNode, *ptr, *flag;
-	newNode = (Node *)malloc(sizeof(Node));
-	newNode->leftAddress = NULL;
-	newNode->data = no;
-	newNode->rightAddress = NULL;
-	if(start == NULL)
-	{
-		start = newNode;
-		newNode->rightAddress = start;
-		newNode->leftAddress = start;
-		end = newNode;
-	}
-	else
-	{
-		ptr = start;
-		flag = start;
-		while(ptr->rightAddress != start)
-		{
-			ptr = ptr->rightAddress;
-		}
-		ptr->rightAddress = newNode;
-		newNode->leftAddress = ptr;
-		newNode->rightAddress = start;
-		flag->leftAddress = newNode;
-		end = newNode;
-	}
+    // If list is empty
+    if (*start == NULL)
+        return;
+ 
+    // Find the required node
+    // Declare two pointers and initialize them
+    struct Node *curr = *start, *prev_1 = NULL;
+    while (curr->data != key) {
+        // If node is not present in the list
+        if (curr->next == *start) {
+            printf("\nList doesn't have node with value = %d", key);
+            return;
+        }
+ 
+        prev_1 = curr;
+        curr = curr->next;
+    }
+ 
+    // Check if node is the only node in list
+    if (curr->next == *start && prev_1 == NULL) {
+        (*start) = NULL;
+        free(curr);
+        return;
+    }
+ 
+    // If list has more than one node,
+    // check if it is the first node
+    if (curr == *start) {
+        // Move prev_1 to last node
+        prev_1 = (*start)->prev;
+ 
+        // Move start ahead
+        *start = (*start)->next;
+ 
+        // Adjust the pointers of prev_1 and start node
+        prev_1->next = *start;
+        (*start)->prev = prev_1;
+        free(curr);
+    }
+ 
+    // check if it is the last node
+    else if (curr->next == *start) {
+        // Adjust the pointers of prev_1 and start node
+        prev_1->next = *start;
+        (*start)->prev = prev_1;
+        free(curr);
+    }
+    else {
+        // create new pointer, points to next of curr node
+        struct Node* temp = curr->next;
+ 
+        // Adjust the pointers of prev_1 and temp node
+        prev_1->next = temp;
+        temp->prev = prev_1;
+        free(curr);
+    }
 }
-void deleteBeg()
+ 
+// Function to display list elements
+void display(struct Node* start)
 {
-	Node *ptr, *flag;
-	ptr = start;
-	flag = ptr->rightAddress;
-	while(ptr->rightAddress != start)
-	{
-		ptr = ptr->rightAddress;
-	}
-	ptr->rightAddress = flag;
-	flag->leftAddress = ptr;
-	start = flag;
+    struct Node* temp = start;
+ 
+    while (temp->next != start) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("%d ", temp->data);
 }
-void deleteEnd()
-{
-	Node *ptr, *flag, *temp;
-	ptr = start;
-	temp = start;
-	while(ptr->rightAddress != start)
-	{
-		flag = ptr;
-		ptr = ptr->rightAddress;
-	}
-	flag->rightAddress = start;
-	end = flag;
-	temp->leftAddress = end;
-	free(ptr);
-}
-void deletePos(int pos)
-{
-	Node *ptr, *flag;
-	ptr = start;
-	int count = 1;
-	while(ptr->rightAddress != start)
-	{
-		if(count==pos)
-		{
-			flag->rightAddress = ptr->rightAddress;
-			ptr->rightAddress->leftAddress = flag;
-			free(ptr);
-			break;
-		}
-		flag = ptr;
-		ptr = ptr->rightAddress;
-		count = count + 1;
-	}
-}
-void delete()
-{
-	Node *ptr;
-	ptr = start;
-	free(ptr);
-}
-void display()
-{
-	Node *ptr;
-	ptr = start;
-	printf("<->START<->");
-	while(ptr->rightAddress != start)
-	{
-		printf("%d<->",ptr->data);
-		ptr = ptr->rightAddress;
-	}
-	if(ptr->data == 0)
-	{
-		printf("END<->");
-		return;
-	}
-	printf("%d<->",ptr->data);
-	printf("END<->");
-}
-void revDisplay()
-{
-	Node *ptr;
-	ptr = end;
-	printf("<->END<->");
-	while(ptr->leftAddress != end)
-	{
-		printf("%d<->",ptr->data);
-		ptr = ptr->leftAddress;
-	}
-	if(ptr->data == 0)
-	{
-		printf("END<->");
-		return;
-	}
-	printf("%d<->",ptr->data);
-	printf("START<->");
-}
+ 
+// Driver program to test above functions
 int main()
 {
-	printf("Deleting & Traversing\n");
-	printf("*********************\n\n");
-	printf("1: Add\n2: Delete\n3: Display\n4: Reverse Display\n0: Exit\n\n");
-	int choice,no,pos;
-	while(1)
-	{
-		printf("Enter Choice : ");
-		scanf("%d",&choice);
-		if(choice==1)
-		{
-			printf("Enter Number : ");
-			scanf("%d",&no);
-			printf("\n");
-			add(no);
-		}
-		else if(choice==2)
-		{
-			int size = sizeofList();
-			while(1)
-			{
-				printf("Enter Position : ");
-				scanf("%d",&pos);
-				if(pos==1)
-				{
-					if(size==1)
-					{
-						delete();
-						break;
-					}
-					deleteBeg();
-					break;
-				}
-				else if(pos<1 || pos>size)
-				{
-					continue;
-				}
-				else if(pos==size)
-				{
-					deleteEnd();
-					break;
-				}
-				else
-				{
-					deletePos(pos);
-					break;
-				}
-			}
-			printf("\n");
-		}
-		else if(choice==3)
-		{
-			display();
-			printf("\n\n");
-		}
-		else if(choice==4)
-		{
-			revDisplay();
-			printf("\n\n");
-		}
-		else if(choice==0)
-		{
-			break;
-		}
-	}
+    // Start with the empty list
+    struct Node* start = NULL;
+ 
+    // Created linked list will be 4->5->6->7->8
+    insert(&start, 4);
+    insert(&start, 5);
+    insert(&start, 6);
+    insert(&start, 7);
+    insert(&start, 8);
+ 
+    printf("List Before Deletion: ");
+    display(start);
+ 
+    // Delete the node which is not present in list
+    deleteNode(&start, 9);
+    printf("\nList After Deletion: ");
+    display(start);
+ 
+    // Delete the first node
+    deleteNode(&start, 4);
+    printf("\nList After Deleting %d: ", 4);
+    display(start);
+ 
+    // Delete the last node
+    deleteNode(&start, 8);
+    printf("\nList After Deleting %d: ", 8);
+    display(start);
+ 
+    // Delete the middle node
+    deleteNode(&start, 6);
+    printf("\nList After Deleting %d: ", 6);
+    display(start);
+ 
+    return 0;
 }
