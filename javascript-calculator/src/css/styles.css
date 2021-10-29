@@ -1,0 +1,43 @@
+.column-3 {
+    width:75%;
+    float:left;
+}
+
+.column-2 {
+    width:50%;
+    float:left;
+}
+
+.column-1 {
+    width:25%;
+    float:left;
+}
+
+button.calc_button{
+    width: 100%;
+    height: 100px;
+    border: 2px solid #ddd;
+    background: #eee;
+    font-size: 32px;
+    color: #555;
+}
+
+input.result{
+    height: 100px;
+    width: auto;
+    border: none;
+    text-align: right;
+    font-size: 32px;
+    position: relative;
+    max-width: 100vw;
+    margin-right: 50px;
+    float: right;
+}
+
+.floaty-last{
+    position: absolute;
+    right: 50px;
+    z-index: 99;
+    top: 10px;
+    color: #aaa;
+}
