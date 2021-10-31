@@ -1,0 +1,28 @@
+void Solution::merge(vector<int> &A, vector<int> &B) {
+    int i = 0, j = 0;
+    int m = A.size(), n = B.size();
+    vector<int> ans;
+
+    while(i < m && j < n){
+        if(A[i] < B[j]){
+            ans.push_back(A[i]);
+            i++;
+        }
+        else{
+            ans.push_back(B[j]);
+            j++;
+        }
+    }
+
+    while(i < m){
+        ans.push_back(A[i]);
+        i++;
+    }
+
+    while(j < n){
+        ans.push_back(B[j]);
+        j++;
+    }
+
+    A = ans;
+}
