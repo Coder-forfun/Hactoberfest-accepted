@@ -32,6 +32,19 @@ def wishMe():
 
     speak("I'm your siri here. How may I help You?")
 
+def search_youtube(query_raw):
+    if query_raw == "":
+        pass
+    else:
+        query_processed = query_raw.replace(" ", "+")
+        webbrowser.open(f"https://www.youtube.com/results?search_query={query_processed}")
+
+def search_google(query_raw):
+    if query_raw == "":
+        pass
+    else:
+        query_processed = query_raw.replace(" ", "+")
+        webbrowser.open(f"https://www.google.com/search?q={query_processed}")
 
 def takeCommand():
     """This function is for taking user input command and return string from speech command"""
@@ -88,6 +101,16 @@ if __name__ == "__main__":
             webbrowser.open("youtube.com")
             speak("Opening youtube...")
 
+        elif ("search" in query) and ("google" in query):
+            speak("Searching on Google...")
+            search_query = query[query.find("google") + 7:]
+            search_google(search_query)
+
+        elif ("search" in query) and ("youtube" in query):
+            speak("Searching on Youtube...")
+            search_query = query[query.find("youtube") + 8:]
+            search_youtube(search_query)
+
         elif 'open google' in query:
             webbrowser.open("google.com")
             speak("Opening google...")
@@ -119,4 +142,4 @@ if __name__ == "__main__":
         elif 'exit' in query:
             speak("Quitting....Thanks for your worthy time. Hope you've enjoyed")
             break
-        
+ 
