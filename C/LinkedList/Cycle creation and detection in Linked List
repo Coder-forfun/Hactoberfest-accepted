@@ -66,7 +66,7 @@ using namespace std;
  bool detection_cycle(node* head){
  	node* slow=head;
  	node* fast=head;
- 	while(fast!=NULL && fast->next!=NULL)
+ 	while(fast && fast->next)
 	 {
  		
  		slow=slow->next;
