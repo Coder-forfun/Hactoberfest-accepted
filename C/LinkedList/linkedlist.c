@@ -7,7 +7,7 @@ int main()
 	struct node *next;
 };
 	struct node *head,*newnode,*temp;
-	head=0;
+	head=NULL;
 	int choice=1;
 	while(choice)
 	{
