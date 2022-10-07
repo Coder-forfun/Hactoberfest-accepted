@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"
+        type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <title>list of groceries</title>
+    <style>
+        body {
+            background-color: rgb(41, 29, 29);
+            color: white;
+            margin: 0px;
+            padding: 0px;
+        }
+        h2 {
+            /* border:2px solid black; */
+            text-align: center;
+            font-size: 50px;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+                "Lucida Sans", Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        div li {
+            display: block;
+            border: 2px solid wheat;
+            background-color: rgb(255, 40, 40);
+            margin: 2px;
+            padding: 4px;
+            margin-right: 35px;
+            text-decoration: none;
+            text-align: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .col-6 {
+            font-size: 25px;
+        }
+
+        #four {
+            font-size: 25px;
+            background-color: rgb(253, 83, 22);
+        }
+
+        #five {
+            font-size: 25px;
+            background-color: rgb(149, 7, 40);
+        }
+
+        img {
+            margin-top: 2px;
+            width: 90px;
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 15px 25px;
+            display: inline-block;
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .vis-container {
+            margin-top: 30px;
+            background-color: #91fbeb;
+            border-radius: 10px;
+            height: 280px;
+            margin: 10px;
+            padding-top: 20px;
+            padding-bottom: 60px;
+            font-size: 30px;
+            text-align: center;
+            color: rgb(86, 5, 5);
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        p {
+            font-size: 16px;
+            color: black;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+    <section class="menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Order Groceries</a>
+        <a href="#">Contact Us</a>
+    </section>
+    <div id="page">
+        <img src="lion.jpg" alt="" />
+        <h1 id="header">LISTKING</h1>
+        <h2>BUY GROCERIES</h2>
+        <ul>
+            <li id="one" class="col-6"><em>fresh</em> figs</li>
+            <li id="two" class="col-6">pine nuts</li>
+            <li id="three" class="col-6">honey</li>
+            <li id="four" class="col-sm-2">balsamic vinegar</li>
+            <li id="four" class="col-sm-2"> Bakery and Bread </li>
+            <li id="four" class="col-md-2"> Pasta and Rice </li>
+            <li id="four" class="col-md-4"> Dairy, Cheese, and Eggs </li>
+            <li id="five" class="col-md-4"> Frozen Foods</li>
+            <li id="five" class="col-sm-6"> Oils, Sauces, Salad Dressings, and Condiments</li>
+            <li id="five" class="col-sm-4"> Snacks and Crackers</li>
+            <li id="five" class="col-sm-2"> Tomato sauce</li>
+        </ul>
+    </div>
+   
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="vis-container">1. Research & Discovery: Visibility and Transparency
+                    <p>The search process is critical for success. Incisiv reports that about 90% of shoppers check a
+                        store’s website before they make a purchase, whether they buy online or in-store.
+                        The grocery industry lags behind other industries in this area.</p>
+                </div>
+            </div>
+            <div  class="col-sm-4">
+                <div class="vis-container">2. Online Ordering: Simple and Seamless Checkout
+                    <p>More than 70% of shoppers say checkout is their biggest pain point, and one out of five say
+                        they,ll abandon their cart if the checkout process is lengthy or complex.
+                        Ensuring a quick and easy checkout experience is an important area of investment for your
+                        grocery eCommerce website.</p>
+                </div>
+            </div>
+            <div  class="col-sm-4">
+                <div class="vis-container">3. Frictionless Fulfillment: Ease of Experience
+                    <p>As more third-party delivery options become available, shoppers are less loyal to Instacart in
+                        2021 than they were in 2019,
+                        according to a 2021 report by Barclays Investment Bank: Dissecting Instacart’s Hangover. This is
+                        good news for grocers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="vis-container">4. Customer Satisfaction: 360-Degree Service
+                    <p>Customer satisfaction has evolved from issue resolution by call centers to proactive customer
+                        engagement.
+                        This includes everything from the ability to create a profile and save preferences, to self-help
+                        tools, to loyalty programs.One area of high growth is functionality around personalization and engagement. Recommendations on the homepage that are personalized to that user, and the integration of a virtual assistant are two of the innovations that have seen greater adoption in 2021 compared to the previous year.
+
+                        With more than 50% of food purchasing decisions influenced by dietary restrictions, the ability to get personalized recommendations based on eating preferences is now an important offering. Yet only 13% of grocers currently have this capability.
+                        
+                        The UK’s Tesco provides a number of dietary options that customers can select in the account section to create a more personalized shopping experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="\jquery-3.6.1.min.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            var $newListItem = $("<li class=col-sm-4><em>gluten-free</em> soy sauce </li>");
+            $("li:last").after($newListItem);
+            $('li:last').css({
+
+                'background-color': 'blue',
+                'font-size': '25px'
+
+            });
+        });
+    </script>
+</body>
+
+</html>
