@@ -4,12 +4,12 @@ public class addition {
     public static void main(String[] args) {
         System.out.println("Enter two numbers");
         Scanner inp=new Scanner(System.in);
-        int a=inp.nextInt();
+        int num1=inp.nextInt();
         // need to close Scanner class
         inp.close();
-        int b=inp.nextInt();
+        int num2=inp.nextInt();
         // need to close Scanner class
         inp.close();
-        System.out.println("Addition of integers is: "+(a+b));
+        System.out.println("Addition of integers is: "+(num1+num2));
     }
 }
