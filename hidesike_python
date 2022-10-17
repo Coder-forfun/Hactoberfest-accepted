@@ -1,0 +1,179 @@
+import random
+
+places = ["by the fire", "under the table", "behind the car", 
+    "behind a tree", "behind a rock", "under the camper", 
+    "behind the tent", "in a bush", "on the street", "inside a cave", 
+    "in the creek", "in a ditch"]
+
+possible = [True, False]
+
+hidingplace = random.choice(places)
+hidingplacetwo = random.choice(places)
+
+if hidingplace == hidingplacetwo:
+    hidingplacetwo = random.choice(places)  
+    
+print "You and two friends have gone camping!"
+print "You all decide to play hide and seek. You're it first."
+print "After you count to 100, you look around..."
+print ""
+
+print places[:3]
+print places[3:6]
+print places[6:9]
+print places[9:]
+print ""
+
+def findTheFriend():
+    global hidingplace
+    global hidingplacetwo
+    num = 80
+    seconds = input("Guess a hiding spot: ")
+    images(seconds)
+    
+    while num > 0:
+
+        if num == 10:
+                    print "They are not here... Your friends win... :-("
+                    print "They were hiding " + hidingplace + " and " + hidingplacetwo + "."
+                    break    
+            
+        if seconds == hidingplace:
+                print "You found a friend!"
+                areyoudone = input("Did you find this friend first? ")
+                
+                if areyoudone == "yes":
+                    print "Keep looking!"
+                    print ""
+                    num = num + 30
+                    seconds = input("Guess a hiding spot: ")
+                    images(seconds)
+                    
+                if areyoudone == "no":
+                    print "You found both of your friends! You Win!"
+                    break
+                
+        if seconds == hidingplacetwo:
+                print "You found a friend!"
+                areyoudone = input("Did you find this friend first? ")
+                
+                if areyoudone == "yes":
+                    print "Keep looking!"
+                    print ""
+                    num = num + 30
+                    seconds = input("Guess a hiding spot: ")
+                    images(seconds)
+                    
+                if areyoudone == "no":
+                    print "You found both of your friends! You Win!"
+                    break
+            
+        if seconds != hidingplace and seconds != hidingplacetwo:
+            # might have to move
+            if num == 40 or num == 20:
+                kickthecan = random.choice(possible)
+                if kickthecan == True:
+                    print "A friend has kicked the can! Both run and hide in new places!"
+                    hidingplace = random.choice(places)
+                    hidingplacetwo = random.choice(places)
+                    num = num + 30
+                    
+            if seconds not in places:
+                print "Must be within the list."
+                seconds = input("Guess a hiding spot: ")
+                images(seconds)
+                
+            else:    
+                num = num - 10
+                print "They are not here! Keep Looking!"
+                print "Your timer has dropped! " + str(num) + " seconds left!"
+                print ""
+                
+                seconds = input("Guess a hiding spot: ")
+                images(seconds)
+        
+        
+        
+          
+def images(seconds):
+    if seconds == "by the fire":
+        print "      |\        "
+        print "      | \       "
+        print "      |  \      "
+        print "      /   |     "
+        print "     / __ |     "
+        print "    / /  \ \    "
+        print "   / /    \ \   "
+        print "  | |      | |  "
+        print "  | |      | |  "
+        print "   \ \____/ /   "
+        print " ___\______/___ "
+        print "|__  __ __ _   |"
+        print "|______________|"
+
+    if seconds == "under the table":
+        print "    _________    "
+        print "  _  |     |  _  "
+        print "  |__|  X  |__|  "
+    
+    if seconds == "behind the car":
+        print "    ____    "
+        print "  _/ || \_  "
+        print "  -o----o-  "
+        
+    if seconds == "behind a tree":
+        print "  /\  /\  /\  "     
+        print " /__\/__\/__\ "
+        print "  ||  ||  ||  "
+        
+    if seconds == "behind a rock":
+        print "   _____   "
+        print "  /     \  "
+        print " |_______| "
+        
+    if seconds == "under the camper":
+        print "   __________    "
+        print "  |          |   "
+        print "  |      ||  \_  "
+        print "  -O--------O--  "
+    
+    if seconds == "behind the tent":
+        print "    /\    "
+        print "   /  \   "
+        print "  / /\ \  "
+        print " / /  \ \ "
+        
+    if seconds == "in a bush":
+        print "   ____   "
+        print "  |_  _|  "
+        print "  \_||_/  "
+        print "    ||    "
+    
+    if seconds == "on the street":
+        print "  |   |   |  "
+        print "  |       |  "
+        print "  |   |   |  "
+        print "  |       |  "
+        print "  |   |   |  "
+        
+    if seconds == "inside a cave":
+        print "      /\  /\      "
+        print "     /  \/  \     "
+        print "    /    \   \    "
+        print "   /      \   \   "
+        print "  /   __   \   \  "
+        print " /   |  |   \   \ "
+        
+    if seconds == "in the creek":
+        print "  |  /  /  |  "
+        print "  |  \  \  |  "
+        print "  |  /  /  |  "
+        print "  |  \  \  |  "
+    
+    if seconds == "in a ditch":
+        print "  |  o     |  "
+        print "  |     o  |  "
+        print "  | O      |  "
+        print "  |       o|  "
+
+findTheFriend()
