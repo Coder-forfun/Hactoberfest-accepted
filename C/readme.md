@@ -1,0 +1,11 @@
+# <center>**Index**</center>
+1. [Breadth first search traversal for graph](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/BFS/BFS.c)
+2. [Depth first search traversal for graph](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/DFS/DFS.c)
+3. [Linked List data structure implementation in C](https://github.com/Coder-forfun/Hactoberfest-accepted/tree/main/C/LinkedList)
+4. [Searching algorithms in C](https://github.com/Coder-forfun/Hactoberfest-accepted/tree/main/C/Searching)
+5. [Sorting algorithms in C](https://github.com/Coder-forfun/Hactoberfest-accepted/tree/main/C/SortingC)
+6. [Greatest Common Divisor using recursion](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/gcd_using_recursion.c)
+7. [Printing Pattern](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/PrintingPattern.c)
+8. [Queue implementation using array](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/queuearray.c)
+9. [Reverse an integer](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/reverse_number.c)
+10. [Stack implementation using array](https://github.com/Coder-forfun/Hactoberfest-accepted/blob/main/C/stack.c)
