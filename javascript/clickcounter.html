@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        body{
+    /* background-image:url("subvertivo-_lab-8HrVclautyw-unsplash.jpg"); */
+    background-size: cover;
+    align-items: center;
+}   
+h2{ text-align: center ;
+    margin-top: 50px;
+    opacity: 50%;
+}
+h1{font-size: 60px;
+    text-align: center ;
+    margin-top: 30px;
+}
+h3{
+ text-align: center;
+ font-size: 40px;
+}
+.btn{
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    top: 0; left: 0; bottom: 0; right: 0; 
+}
+#clk{
+  cursor: pointer;
+    border: 1px solid black;
+    border-radius: 30px;
+   background-color: azure;
+    font-weight: 300;
+    font-size: 3rem;
+    
+    height: 80px;
+    width: 320px;
+}
+.mode{
+  height: 40px;
+    width: 110px;
+    cursor: pointer;
+  border: 1px solid black;
+    border-radius: 10px;
+   background-color: azure;
+    font-weight: 100;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+  </style>
+</head>
+<body>
+  <!--     HTML starts here    -->
+  <!--     HTML starts here    -->
+  <h1>Click-counter->how many Times you clicked </h1>
+  <div class="time"><h3></h3></div>
+  <h1></h1>
+  <h2>@radhe099</h2>
+  <br>  
+  <div class="btn"><button id="clk" onclick="counter()">click</button></div>
+  <button class="mode" onclick="mode()">DarkMode</button>
+  <!--      JavaScript Starts here     -->
+  <!--      JavaScript Starts here     -->
+  <script>
+     var body= document.body;
+      var check=0;
+      var bun=document.getElementsByClassName('mode')[0];
+    function mode(){
+     
+      if(check===1){
+        body.style.backgroundColor = 'black';
+        body.style.color='#fff';
+        bun.innerHTML='LightMode'
+          check=0;
+      }else{
+        body.style.backgroundColor="#fff";
+        body.style.color='black';
+        bun.innerHTML='DarkMode';
+        check=1;
+      }
+    }
+
+// linked github
+    var uname = document.querySelector('h2');
+    var link = 'https://github.com/radhe099';
+    uname.addEventListener('click', function open(){
+      window.open(link,'_blank')
+    })
+
+// time 
+    function updatetime(){
+    var today = new Date();
+    var timmeH = today.getHours();
+    var timmeM = today.getMinutes();
+    var timmeS = today.getSeconds();
+    var timmeMS = today.getMilliseconds();
+    var mili = timmeMS %10;
+    var timme=`${timmeH}:${timmeM}:${timmeS}:${mili}`;
+    var time = document.querySelector('h3').innerHTML=timme;
+    }
+    setInterval(updatetime, 100);
+//button logic
+    var count=0;
+    function counter(){
+      
+      count=count+1;
+      document.querySelector('h1').innerHTML=count;
+    }
+
+  </script>
+</body>
+</html>
